@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import Web3 from "web3";
 import { approve, convertTimestamp, deposit, withdraw } from "./common";
 import { getData } from "./common/mutilcall";
-import { bsc, CoinbaseWallet, injected } from "./connector";
+import { BSCWallet, CoinbaseWallet, injected } from "./connector";
 
 function App() {
   const { account, activate, active, library, network } = useWeb3React();
@@ -18,7 +18,7 @@ function App() {
   const stakeInputRef = useRef({});
 
   const connectMetamask = () => {
-    activate(bsc);
+    activate(BSCWallet);
   };
 
   const connectWallet = () => {
@@ -120,6 +120,13 @@ function App() {
   // await bsc.activate();
   // await bsc.getAccount();
   // await bsc.getChainId();
+
+  useEffect(() => {
+    (async() => {
+      const activate = await BSCWallet.activate();
+      console.log(activate);
+    })()
+  },[BSCWallet])
 
   return (
     <div
