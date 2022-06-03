@@ -19,6 +19,7 @@ export const CoinbaseWallet = new WalletLinkConnector({
   supportedChainIds: [1, 3, 4, 5, 42],
 });
 export const walletConnect = new WalletConnectConnector({
+  
   supportedChainIds: [4],
   rpc: {
     4: `https://rinkeby.infura.io/v3/9b05d6eb4d8841a4b0b7ccc591854513`,
